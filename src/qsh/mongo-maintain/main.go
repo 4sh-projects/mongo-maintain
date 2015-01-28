@@ -43,18 +43,20 @@ func main() {
   for _, script := range scripts {
     filePath := path.Join(params.scripts, script.name)
 
-    hashString, err := computeMd5(filePath)
-
-    if err != nil {
-      log.Println(err)
-      manageScriptFailure(script.name, hashString, "ERROR during md5 computing")
-    }
-
     scriptObject, err := tryToGetScriptObjectFromDb(script.name)
 
     if (err != nil && err.Error() != "not found") {
       log.Println(err)
-      manageScriptFailure(script.name, hashString, "ERROR when trying to get script from db")
+      log.Printf("ERROR when trying to get script %s from db\n", script.name)
+      stopBecauseOfFailure()
+    }
+
+    hashString, err := computeMd5(filePath)
+
+    if err != nil {
+      log.Println(err)
+      log.Printf("ERROR during md5 computing of script %s\n", script.name)
+      stopBecauseOfFailure()
     }
 
     if err == nil && scriptObject.Status == "OK" {
