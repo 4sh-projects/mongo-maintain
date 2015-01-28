@@ -51,10 +51,10 @@ func main() {
       stopBecauseOfFailure()
     }
 
-    hashString, err := computeMd5(filePath)
+    hashString, hashErr := computeMd5(filePath)
 
-    if err != nil {
-      log.Println(err)
+    if hashErr != nil {
+      log.Println(hashErr)
       log.Printf("ERROR during md5 computing of script %s\n", script.name)
       stopBecauseOfFailure()
     }
