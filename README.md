@@ -3,6 +3,7 @@ Run your scripts in your mongodb with security for each environnement
 
 ## Download
 
+For command line usage :
 [See here](http://4sh-projects.github.io/mongo-maintain/ "Download")
 
 ## For users :
@@ -38,10 +39,13 @@ mongo-maintain program takes some arguments :
 * _user_ -> username to connect to mongo. Optional
 * _password_ -> password of the user to connect to mongo. Optional
 
-#### Java integration
+## Java integration
 
-Coming soon
+You can use MongoMaintain.java. You only need to cpy this class on your project and to instanciate it to call run method.
+This class is standalone, it will download mongo-maintain last version if needed.
 
+Example:
+  new MongoMaintain().run(new MongoMaintain.MongoMaintainParams("/Users/dro/Documents/MongoMaintain", "localhost:27017", "testDatabase"));
 
 ## For devs :
 
