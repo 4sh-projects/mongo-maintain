@@ -1,6 +1,10 @@
 # mongo-maintain
 Run your scripts in your mongodb with security for each environnement
 
+## Download
+
+Coming soon
+
 ## For users :
 
 ### What to know ?
@@ -36,12 +40,14 @@ mongo-maintain program takes some arguments :
 
 #### Java integration
 
-Comming soon
+Coming soon
 
 
 ## For devs :
 
 ### Install go
+
+Defines GOPATH environnement variable
 
 ### Install mgo (mongo driver for go)
 
@@ -51,8 +57,10 @@ Comming soon
   $ go run main.go mongo.go params.go script-file.go utils.go -scripts=./MongoMaintain -url=localhost:27017 -database=test
 
 ### Build the code
-  $ export GOPATH="path-to-the-root-folder-mongo-maintain"
-
   $ go build
 
   $ ./mongo-maintain -scripts=/Users/dro/Documents/MongoMaintain -url=localhost:27017 -database=test2
+
+### Cross compilation
+
+Coming soon
