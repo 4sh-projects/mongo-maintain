@@ -3,7 +3,7 @@ Run your scripts in your mongodb with security for each environnement
 
 ## Download
 
-Coming soon
+[See here](http://4sh-projects.github.io/mongo-maintain/ "Download")
 
 ## For users :
 
