@@ -68,11 +68,14 @@ Defines GOPATH environnement variable
 ### Cross compilation
 
 go-linux-amd64 build -o ./build/linux-amd64/mongo-maintain
+
 go-linux-386 build -o ./build/linux-x86/mongo-maintain
 
 go-windows-amd64 build -o ./build/windows-amd64/mongo-maintain
+
 go-windows-386 build -o ./build/windows-x86/mongo-maintain
 
 go-darwin-amd64 build -o ./build/darwin-amd64/mongo-maintain
+
 go-darwin-386 build -o ./build/darwin-x86/mongo-maintain
 
