@@ -2,33 +2,13 @@ package main
 
 import "log"
 import "os"
-import "io/ioutil"
-import "regexp"
-import "sort"
-import "path"
 
 var params Params
-var fileNameValidator = regexp.MustCompile(`^v[\d]*([\._][\d]*)*__.*\.js$`)
 
 func main() {
   params = buildParams()
 
-  scripts := []ScriptFile{}
-  files, _ := ioutil.ReadDir(params.scripts)
-
-  // Iterate on files contained in 'scripts' folder
-  for _, f := range files {
-    if !f.IsDir() {
-      scriptFile, err := makeScriptFile(f.Name())
-
-      if err != nil {
-        log.Println(err)
-        stop()
-      }
-
-      scripts = append(scripts, scriptFile);
-    }
-  }
+  scripts := getScriptFilesFromFolder(params.scripts)
 
   initMongoContext(params)
   dumpErr := mongoDump()
@@ -38,10 +18,8 @@ func main() {
     stop()
   }
 
-  sort.Sort(ByVersion(scripts))
-
   for _, script := range scripts {
-    filePath := path.Join(params.scripts, script.name)
+    filePath := script.path
 
     scriptObject, err := tryToGetScriptObjectFromDb(script.name)
 
